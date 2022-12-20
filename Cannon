@@ -1,0 +1,35 @@
+local Part = script.Parent
+local ClickDetector = Part.ClickDetector
+ClickDetector.Parent = Part
+
+local function OnMouseClick(HitPart)
+	local Character = HitPart.Character
+	local Humanoid = Character:FindFirstChild("Humanoid")
+	if Part.Enabled.Value == true then
+		Part.Enabled.Value = false
+		ClickDetector.Parent = script
+		Character:MoveTo(Vector3.new(Part.Position.X, Part.Position.Y-2, Part.Position.Z))
+		local CurrentSpeed = Humanoid.WalkSpeed
+		local CurrentJump = Humanoid.JumpPower
+		Character:MoveTo(Vector3.new(Part.Position.X, Part.Position.Y-2, Part.Position.Z))
+		Humanoid.WalkSpeed = 0
+		Humanoid.JumpPower = 0
+		Character:MoveTo(Vector3.new(Part.Position.X, Part.Position.Y-2, Part.Position.Z))
+		task.wait(3)
+		Part.SmokePart.Smoke.Enabled = true
+		Part.SmokePart.ParticleEmitter.Enabled = true
+		local BodyVelocity = script.BodyVelocity
+		BodyVelocity:Clone().Parent = Character.Head
+		task.wait(1.5)
+		Character.Head.BodyVelocity:Destroy()
+		Part.SmokePart.Smoke.Enabled = false
+		Part.SmokePart.ParticleEmitter.Enabled = false
+		task.wait(3)
+		Humanoid.WalkSpeed = CurrentSpeed
+		Humanoid.JumpPower = CurrentJump
+		Part.Enabled.Value = true
+		ClickDetector.Parent = Part
+	end
+end
+
+ClickDetector.MouseClick:Connect(OnMouseClick)

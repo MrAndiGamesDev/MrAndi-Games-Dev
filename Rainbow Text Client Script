@@ -1,0 +1,20 @@
+local Gui = script.Parent
+local Title = Gui:WaitForChild("Title")
+Title.Text = "Test"
+
+local Task = task
+local CoolDown = 0.05
+local Counter = 0
+
+local function RainbowMath(Color) 
+	local Math = math
+	local Acos = Math.acos
+	local Cos = Math.cos
+	local Pi = Math.pi
+	return Acos(Cos(Color * Pi)) / Pi 
+end
+
+while Task.wait(CoolDown) do
+	Title.TextColor3 = Color3.fromHSV(RainbowMath(Counter), 1, 1)
+	Counter = Counter + 0.01
+end

@@ -1,3 +1,6 @@
+--Credit To SubToMrAndi
+--Make Sure To Use This Code On ScreenGui And Add TextLabel
+
 local Gui = script.Parent
 local Title = Gui:WaitForChild("Title")
 Title.Text = "Test"

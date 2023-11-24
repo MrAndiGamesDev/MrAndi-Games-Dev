@@ -6,6 +6,7 @@ local Libs = Data.Libs or Data:WaitForChild("Libs")
 local IsStudio = RunService:IsStudio()
 
 --[[
+	 BEFORE USING THIS GIVE CREDIT TO Main Creator @LM-loleris
 	 AutoSaveProfiles: Seconds (This value may vary - ProfileService will split the auto save load evenly in the given time)
 	 RobloxWriteCooldown: Seconds between successive DataStore calls for the same key
 	 ForceLoadMaxSteps: Steps taken before ForceLoad request steals the active session for a profile
